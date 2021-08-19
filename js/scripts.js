@@ -2,11 +2,14 @@ function romanize (number) {
   if (isNaN(parseInt(number))) {
     return NaN;
   }
-  var romanBasics = {M:1000, D:500, C:100, L:50, X:10, V:5, I:1}, roman = "", i;
+  let romanBasics = {M:1000, D:500, C:100, L:50, X:10, V:5, I:1};
+  let roman = "";
+  let i;
   for (i in romanBasics) {
-    if (number >= romanBasics[i]) {
+    while (number >= romanBasics[i]) {
       roman += i;
-      return roman;
+      number -= romanBasics[i];
     }
   }
+  return roman;
 }
